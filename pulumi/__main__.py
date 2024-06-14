@@ -16,7 +16,7 @@ web_bucket = aws.s3.Bucket('www.jcblouin.com',
         index_document="index.html",
     ))
 
-content_dir = "www"
+content_dir = "webroot"
 for file in os.listdir(content_dir):
     filepath = os.path.join(content_dir, file)
     mime_type, _ = mimetypes.guess_type(filepath)
