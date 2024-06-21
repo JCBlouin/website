@@ -1,0 +1,11 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.DS_Store
+
+# Ignore log files and temp files.
+*.log
+*.tmp
+*.swp

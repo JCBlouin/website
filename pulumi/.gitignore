@@ -1,0 +1,49 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.DS_Store
+
+# Pulumi
+*.bak
+*.log
+node_modules/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+env.bak/
+.mypy_cache/
+.pdm/
+.idea/
+.vscode/
+*.pyo
+*.pyd
+
+# TypeScript
+lib/
+node_modules/
+
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.env
+
+# Go
+bin/
+*.exe
+
+# Dotenv files
+.env
+.env.*
+
+# Ignore log files and temp files.
+*.log
+*.tmp
+*.swp
