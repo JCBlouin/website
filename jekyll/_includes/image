@@ -1,4 +1,5 @@
-<!---
+{%- comment -%}
+
 Great idea from Eduardo Bouças
 https://eduardoboucas.com/blog/2014/12/07/including-and-managing-images-in-jekyll.html
 
@@ -7,35 +8,29 @@ Inserting an image in a post:
 
 {% include image name="linkedin-before.png" caption="Sharing my blog on LinkedIn" %}
 
--->
 
+Construct the imagePath for src= 
+Page images go in /assets/images.
+Post images go in a folder like /assets/posts/2024-06-21-sample-post/
 
-<!--
-    Construct the imagePath for src= 
-    Page images go in /assets/images.
-    Post images go in a folder like /assets/posts/2024-06-21-sample-post/
--->
+{%- endcomment -%}
+
 {% if page.url contains '/posts/' %}
-    <!-- Check if the current page URL contains '/posts/' -->
-    {% capture imageFolder %}/assets/posts/{% endcapture %}
-    <!-- If true, set the image folder to '/assets/posts/' and construct the image path using date and title -->
-    {% capture imagePath %}{{ imageFolder }}{{ page.date | date: "%Y-%m-%d" }}-{{ page.title | slugify }}/{{ include.name }}{% endcapture %}
+    {% capture imagePath %}/assets/posts/{{ page.date | date: "%Y-%m-%d" }}-{{ page.title | slugify }}/{{ include.name }}{% endcapture %}
 {% else %}
-    <!-- If the current page URL does not contain '/posts/' -->
-    {% capture imageFolder %}/assets/images/{% endcapture %}
-    <!-- Set the image folder to '/assets/images/' and construct the image path using only the image name -->
-    {% capture imagePath %}{{ imageFolder }}{{ include.name }}{% endcapture %}
+    {% capture imagePath %}/assets/images/{{ include.name }}{% endcapture %}
 {% endif %}
 
 
-<!-- Check if the include variable 'caption' is set -->
 {% if include.caption %}
-    <!-- If 'caption' is provided, wrap the image in a <figure> tag with <figcaption> -->
-    <figure>
-        <img src="{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} width="{{ include.width }}" {% endif %}/>
-        <figcaption>{{ include.caption }}</figcaption>
-    </figure>
-{% else %}
-    <!-- If 'caption' is not provided, just render the <img> tag -->
+
+<figure>
     <img src="{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} width="{{ include.width }}" {% endif %}/>
+    <figcaption>{{ include.caption }}</figcaption>
+</figure>
+
+{% else %}
+
+<img src="{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} width="{{ include.width }}" {% endif %}/>
+
 {% endif %}

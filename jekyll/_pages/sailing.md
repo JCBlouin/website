@@ -4,7 +4,8 @@ title: Sailing
 permalink: /sailing/
 ---
 
-# Sailing Posts
+{% include image name="kitten.png" caption="Awww a kitten." %}
+
 
 <ul>
   {% for post in site.categories.sailing %}
@@ -13,3 +14,4 @@ permalink: /sailing/
     </li>
   {% endfor %}
 </ul>
+
