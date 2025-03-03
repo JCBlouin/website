@@ -18,21 +18,45 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "https://www.jcblouin.com" # the base hostname & protocol for your site, e.g. http://example.com
+
+title: J.C. Blouin
+
+author:
+  name: J.C. Blouin
+  email: mail@jcblouin.com
+
+description:
+  Technology and sailing blog
+
+
+
+
+
+
+minima:
+  skin: solarized-light
+  social_links:
+    # - { platform: facebook,       user_url: "https://www.facebook.com/jekyll" }
+    - { platform: github,         user_url: "https://github.com/JCBlouin" }
+    - { platform: gitlab,         user_url: "https://gitlab.com/jcblouin" }
+    # - { platform: keybase,        user_url: "https://keybase.io/jekyll" }
+    - { platform: linkedin,       user_url: "https://www.linkedin.com/in/jcblouin/" }
+    - { platform: youtube,        user_url: "https://www.youtube.com/@WindWanderlust" }
+
+header_pages:
+  - _pages/sailing.md
+  - _pages/technology.md
+  - _pages/about.md
+  - _pages/contact.md
 
 # Build settings
-theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+
+livereload: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -53,3 +77,21 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+collections:
+  pages:
+    output: true
+
+# Set default categories by _posts/subfolders
+defaults:
+  - scope:
+      path: "_posts/sailing"
+      type: "posts"
+    values:
+      categories: sailing
+
+  - scope:
+      path: "_posts/technology"
+      type: "posts"
+    values:
+      categories: technology

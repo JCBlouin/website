@@ -1,0 +1,36 @@
+{%- comment -%}
+
+Great idea from Eduardo Bouças
+https://eduardoboucas.com/blog/2014/12/07/including-and-managing-images-in-jekyll.html
+
+Inserting an image in a post:
+
+
+{% include image name="linkedin-before.png" caption="Sharing my blog on LinkedIn" %}
+
+
+Construct the imagePath for src= 
+Page images go in /assets/images.
+Post images go in a folder like /assets/posts/2024-06-21-sample-post/
+
+{%- endcomment -%}
+
+{% if page.url contains '/posts/' %}
+    {% capture imagePath %}/assets/posts/{{ page.date | date: "%Y-%m-%d" }}-{{ page.title | slugify }}/{{ include.name }}{% endcapture %}
+{% else %}
+    {% capture imagePath %}/assets/images/{{ include.name }}{% endcapture %}
+{% endif %}
+
+
+{% if include.caption %}
+
+<figure>
+    <img src="{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} width="{{ include.width }}" {% endif %}/>
+    <figcaption>{{ include.caption }}</figcaption>
+</figure>
+
+{% else %}
+
+<img src="{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} width="{{ include.width }}" {% endif %}/>
+
+{% endif %}
